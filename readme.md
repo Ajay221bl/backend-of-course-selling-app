@@ -1,10 +1,12 @@
 - Initialize a new nodejs project
-- add express and jsonwebtokens dependencies
+- add express and jsonwebtoken dependencies
 - create index.js
 - add route skeleton for user sign up, login, purchase a course, see a course
+- use input validation library like zod to validate the input values
+- use bcrypt to store password as a hash value in the Ædatabase.
 - add routes for admin login, admin signup , create a course, delete a course, delete course content
 - add middlewares for user and admin auths
-- add a database (use dotenv file to store the database connection string
-- define the Schema for User, admin, course, purchase
+- add a database (use dotenv file to store the database connection string)
+- define the Schema for user, admin, course, purchase
 - complete the routes for user login, signup, purchase a course, see course (bonus - use express routing to better structure your routes)
 - create the frontend
