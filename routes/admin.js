@@ -86,23 +86,25 @@ adminRouter.post("/course", adminMiddleware, async(req, res)=>{
 })
 
 adminRouter.put("/course",adminMiddleware,  async (req, res)=>{
+    const adminId = req.adminId;
     const title = req.body.title;
+    const courseId = req.body.courseId;
     const price = req.body.price;
     const description = req.body.description;
-    const course = await courseModel.findOne({title : title});
-    console.log(course);
-    if(course){
-        await course.updateOne({
-            price : price,
-            title : title,
-            description : description});
-        
-        res.json({
-            messsage : "course info updated"
-        })
-    }
+    
+   
+    await courseModel.updateOne({
+        courseId : courseId,
+        creatorId : adminId
+    },
+        {
+        price : price,
+        title : title,
+        description : description
+    });
+    
     res.json({
-        message : "course not found"
+        messsage : "course info updated"
     })
 
 
