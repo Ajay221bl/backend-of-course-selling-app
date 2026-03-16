@@ -43,26 +43,7 @@ userRouter.post("/signin", async (req, res)=>{
     res.json("email doesn't exists in database")
 })
 
-userRouter.post("/purchase", userMiddleware, async (req, res)=>{
-    const userId = req.userId;
-    const title = req.body.title;
-    const course = await courseModel.findOne({title : title});
-    const already = await purchaseModel.findOne({courseId : course._id})
-    console.log(already);
-    if(course && (!already)){
-    await purchaseModel.create({
-            userId : userId,
-            courseId : course._id
-        })
-        res.json({
-            message : "purchase made"
-        })
-    }
-    res.json({
-        message : "Course not available for purchase"
-    })
 
-})
 
 userRouter.get("/purchases",userMiddleware, async (req, res)=>{
     const userId = req.userId;
